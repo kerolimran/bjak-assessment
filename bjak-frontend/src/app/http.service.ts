@@ -23,4 +23,7 @@ export class HttpService {
   emptyCart() {
     return this.http.delete(`${environment.baseURL}/cart/empty-cart`);
   }
+  addCustomerDetails(payload){
+    return this.http.put(`${environment.baseURL}/cart/`, payload);
+  }
 }

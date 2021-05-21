@@ -1,39 +1,108 @@
 <section>
-    <div class="spacer">
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-lg-9">
-                    <div class="row shop-listing">
-                        <table class="table shop-table" *ngIf="carts">
-                            <tr>
-                                <th class="b-0">Name</th>
-                                <th class="b-0">Price</th>
-                                <th class="b-0">Quantity</th>
-                                <th class="b-0 text-right">Total Price</th>
-                            </tr>
-                            <tr *ngFor="let item of carts.items">
-                                <td>{{ item.productId.name }}</td>
-                                <td>{{ item.productId.price }}</td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm"
-                                        (click)="_increamentQTY(item.productId._id,1)">+</button>
-                                    {{ item.quantity }}
-                                    <button class="btn btn-primary btn-sm">-</button>
-                                </td>
-                                <td class="text-right">
-                                    <h5 class="font-medium m-b-30">{{ item.total }}</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" align="right">Subtotal :{{ carts.subTotal }}</td>
-                                <td colspan="4" align="right">
-                                    <button class="btn btn-danger" (click)="_emptyCart()">Empty Cart</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+  <div class="spacer">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-lg-9">
+          <form [formGroup]="checkoutForm" (ngSubmit)="_checkout()">
+            <div class="row">
+              <div class="col-lg-2 ml-auto">
+
+              </div>
             </div>
+            <div class="row shop-listing">
+              <table class="table shop-table" *ngIf="carts">
+                <tr>
+                  <th class="b-0">Name</th>
+                  <th class="b-0">Price</th>
+                  <th class="b-0">Quantity</th>
+                  <th class="b-0 text-right">Total Price</th>
+                </tr>
+                <tr *ngFor="let item of carts.items">
+                  <td>{{ item.productId.name }}</td>
+                  <td>RM{{ item.productId.price }}</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm" (click)="_incrementQty(item.productId._id,1)">+</button>
+                    {{ item.quantity }}
+                    <button class="btn btn-primary btn-sm">-</button>
+                  </td>
+                  <td class="text-right">
+                    <h5 class="font-medium m-b-30">RM{{ item.total }}</h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td><button class="btn btn-danger" (click)="_emptyCart()">Empty Cart</button></td>
+                  <td colspan="3" align="right">Subtotal :RM{{ carts.subTotal }}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="row justify-content-md-center">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Customer Details</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input id="firstName" class="form-control" formControlName="firstName" type="text" placeholder="First Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input id="lastName" class="form-control" formControlName="lastName" type="text" placeholder="Last Name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input id="address1" class="form-control" formControlName="address1" type="text" placeholder="Address 1">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input id="address2" class="form-control" formControlName="address2" type="text" placeholder="Address 2">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input id="postcode" class="form-control" formControlName="postcode" type="text" placeholder="Postcode">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input id="city" class="form-control" formControlName="city" type="text" placeholder="City">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input id="state" class="form-control" formControlName="state" type="text" placeholder="State">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input id="phoneNum" class="form-control" formControlName="phoneNum" type="text" placeholder="Phone Number">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input id="email" class="form-control" formControlName="email" type="email" placeholder="Email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row justify-content-md-center">
+                    <button class="btn btn-primary" type="submit">Checkout</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </section>

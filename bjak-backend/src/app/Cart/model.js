@@ -22,15 +22,15 @@ let ItemSchema = new Schema({
     timestamps: true
 })
 let CustomerInfoSchema = new Schema({
-    firstName: { type: Text },
-    lastName: { type: Text },
-    address1: { type: Text },
-    address2: { type: Text },
-    postcode: { type: Text },
-    city: { type: Text },
-    state: { type: Text },
-    phoneNumber: { type: Text },
-    email: { type: Text }
+    firstName: { type: String },
+    lastName: { type: String },
+    address1: { type: String },
+    address2: { type: String },
+    postcode: { type: String },
+    city: { type: String },
+    state: { type: String },
+    phoneNumber: { type: String },
+    email: { type: String }
 })
 const CartSchema = new Schema({
     items: [ItemSchema],
