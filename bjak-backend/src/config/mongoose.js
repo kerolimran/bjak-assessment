@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 module.exports = app => {
     mongoose.connect('mongodb://localhost:27017/bakery', {
         "auth": { "authSource": "admin" },
-        "user": "root",
+        "user": "synagieroot",
         "pass": "000000",
         useUnifiedTopology: true,
         useNewUrlParser: true,

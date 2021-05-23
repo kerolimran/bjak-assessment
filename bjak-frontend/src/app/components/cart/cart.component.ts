@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
 import { FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   cartDetails;
   checkoutForm = this.formBuilder.group({
     firstName: '',
-    LastName: '',
+    lastName: '',
     address1: '',
     address2: '',
     state: '',
@@ -48,12 +49,20 @@ export class CartComponent implements OnInit {
   }
   _checkout(): void {
     const payload = {
-
+      firstName: this.checkoutForm.get('firstName')?.value,
+      lastName: this.checkoutForm.get('lastName')?.value,
+      address1: this.checkoutForm.get('address1')?.value,
+      address2: this.checkoutForm.get('address2')?.value,
+      state: this.checkoutForm.get('state')?.value,
+      city: this.checkoutForm.get('city')?.value,
+      postcode: this.checkoutForm.get('postcode')?.value,
+      phoneNum: this.checkoutForm.get('phoneNum')?.value,
+      email: this.checkoutForm.get('email')?.value
     }
     this.http.addCustomerDetails(payload).subscribe(() => {
-
+      alert(this.checkoutForm.get('firstName')?.value);
     })
-    alert(this.checkoutForm.get('Your Order has been submitted')?.value);
+
   }
   ngOnInit(): void {
     this._getCart();

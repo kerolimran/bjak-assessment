@@ -113,12 +113,35 @@ exports.emptyCart = async (req, res) => {
         let cart = await cartRepository.cart();
         cart.items = [];
         cart.subTotal = 0
+        cart.customerInfo = null;
         let data = await cart.save();
         res.status(200).json({
             type: "success",
             mgs: "Cart has been emptied",
             data: data
         })
+    } catch (err) {
+        console.log(err)
+        res.status(400).json({
+            type: "Invalid",
+            msg: "Something went wrong",
+            err: err
+        })
+    }
+}
+
+exports.addCustomerInfo = async (req, res) => {
+
+    try {
+        let cart = await cartRepository.cart();
+        cart.customerInfo = req.body
+        let data = await cart.save();
+        res.status(200).json({
+            type: "success",
+            mgs: "Your Purchase has been confirmed",
+            data: data
+        })
+        console.log(req.body)
     } catch (err) {
         console.log(err)
         res.status(400).json({

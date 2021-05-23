@@ -10,3 +10,7 @@ exports.addItem = async payload => {
     const newItem = await Cart.create(payload);
     return newItem
 }
+exports.addCustomerInfo = async payload => {
+    const carts = await findByIdAndUpdate(payload);
+    return carts;
+}
