@@ -18,6 +18,7 @@ The API will be running on localhost:4000 or 127.0.0.1:4000
 ### Development server
 
 `cd bjak-frontend` 
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 
